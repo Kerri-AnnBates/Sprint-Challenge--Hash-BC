@@ -47,14 +47,14 @@ def valid_proof(last_hash, proof):
     # TODO: Your code here!
     # Find a number p' such that the last five digits of hash(p) are equal to the first five digits of hash(p')
 
-    guess = f"{last_hash}{proof}".encode()
+    guess = f"{proof}".encode()
     guess_hash = hashlib.sha256(guess).hexdigest()
     last_hash_hashed = hashlib.sha256(f"{last_hash}".encode()).hexdigest()
     # print(type(guess_hash))
 
-    string_last_hash = last_hash_hashed[-5:]
+    # string_last_hash = last_hash_hashed[-5:]
 
-    return string_last_hash == guess_hash[:5]
+    return last_hash_hashed[-5:] == guess_hash[:5]
 
 
 if __name__ == "__main__":
